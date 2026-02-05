@@ -15,3 +15,5 @@ gem "pact"                 # Para las pruebas de contrato
 
 # -- Herramientas de Ayuda --
 gem "pry"                  # Para depurar (debug) si algo falla
+
+gem "json-schema"          # Validación de esquemas JSON
