@@ -2,6 +2,8 @@
 
 Este repositorio contiene la solución automatizada para el reto técnico de QA. El proyecto implementa pruebas E2E para Frontend (Web) y Backend (API) utilizando **Ruby**, **Cucumber** y **Selenium**.
 
+---
+
 ## Tech Stack
 
 * **Lenguaje:** Ruby 3.4.8
@@ -11,6 +13,7 @@ Este repositorio contiene la solución automatizada para el reto técnico de QA.
 * **API Automation:** HTTParty
 * **Contract Testing:** JSON Schema Validator
 * **Validaciones:** RSpec Expectations
+---
 
 ## Estructura del Proyecto
 
@@ -29,6 +32,8 @@ qa-tech-challenge/
 │   └── schemas/            # Contratos JSON para validación de estructura API
 ├── Gemfile                 # Gestión de dependencias
 └── README.md               # Documentación del proyecto
+```
+---
 
 ## Pre-requisitos
 Tener instalado Ruby (versión 3.0 o superior).
@@ -37,49 +42,54 @@ Tener instalado Git.
 
 ## Instalación
 **Clonar el repositorio:**
-´´´bash
+```bash
 git clone https://github.com/hdpineda/qa-tech-challenge.git
 cd challenge_qa_ruby
-
+```
 **Instalar las dependencias (Gemas):**
-´´´bash
+```bash
 bundle install
+```
 
 ## Ejecución de Pruebas
-**Prueba logica**
+1. **Prueba logica**
 ejecuta el archivo de test
-´´´bash
+```bash
 ruby test_logic.rb
-
+```
 Puedes ejecutar las pruebas de diferentes maneras según la necesidad:
 
-**Ejecutar Todo (Frontend + API)**
+2. **Ejecutar Todo (Frontend + API)**
 Para correr la suite completa de pruebas:
-´´´bash
+```bash
 cucumber
-
-**Ejecutar solo Frontend (Applitools)**
+```
+3. **Ejecutar solo Frontend (Applitools)**
 Ejecuta los casos de Login, validación de tabla y validación visual de colores:
-´´´bash
+```bash
 cucumber features/frontend.feature
-
+```
 usando el tag: 
-´´´bash
+```bash
 cucumber --tags @negative
+```
 
-**Ejecutar solo API (ReqRes)**
+4. **Ejecutar solo API (ReqRes)**
 Ejecuta los casos de creación de usuario, validación de contratos y códigos de estado:
-´´´bash
+```bash
 cucumber --tags @api
-
+```
+---
 ## Nota Importante sobre Escenario API E2E
 El escenario "Crear usuario, extraer ID y validar persistencia de datos" (@E2E) está diseñado para fallar en el último paso (GET) intencionalmente o comportarse como una simulación.
 
-Razón: La API pública ReqRes.in es un Mock. Permite realizar peticiones POST y devuelve un ID de éxito (ej. 201), pero no persiste los datos en su base de datos.
+**Razón:** La API pública ReqRes.in es un Mock. Permite realizar peticiones POST y devuelve un ID de éxito (ej. 201), pero no persiste los datos en su base de datos.
 
-Consecuencia: Al intentar consultar inmediatamente el ID recién creado mediante GET, la API responde con 404 Not Found.
+**Consecuencia:** Al intentar consultar inmediatamente el ID recién creado mediante GET, la API responde con 404 Not Found.
 
-Evidencia: El código de automatización realiza correctamente la extracción del ID del POST y la inyección en el GET, demostrando la capacidad de manejar flujo de datos entre pasos, aunque la API no soporte la persistencia real.
+**Evidencia:** El código de automatización realiza correctamente la extracción del ID del POST y la inyección en el GET, demostrando la capacidad de manejar flujo de datos entre pasos, aunque la API no soporte la persistencia real.
+
+---
 
 ## Reportes
 Por defecto, Cucumber genera un reporte detallado en la consola indicando:
@@ -91,7 +101,7 @@ Resumen de escenarios ejecutados.
 **Generar reporte HTML**
 Si deseas un reporte visual en archivo, puedes ejecutar:
 
-´´´bash
+```bash
 cucumber --format html --out reporte.html
-
+```
 Esto creará un archivo reporte.html en la raíz que puedes abrir con cualquier navegador.
